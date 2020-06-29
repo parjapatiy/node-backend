@@ -9,6 +9,7 @@ phases:
   pre_build:
     commands:
       - sed -i "s|MONGODB_URI=.*|MONGODB_URI='$Name'|g" .env
+      - sed -i "s|NODE_ENV.*|NODE_ENV=production|g" .env
   build:
     commands:
       - echo building...
