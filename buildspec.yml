@@ -10,9 +10,9 @@ phases:
     commands:
       #- sed -i "s|MONGODB_URI=.*|MONGODB_URI='$Mongouri'|g" .env
       - sed -i "s|NODE_ENV.*|NODE_ENV=production|g" .env
-      - sed -i "s|DB_HOST.*|DB_HOST=demodb|g" .env
-      - sed -i "s|DB_USER.*|DB_USER=naman|g" .env
-      - sed -i "s|DB_PASS.*|DB_PASS=namanpande12345|g" .env
+      - sed -i "s|DB_HOST.*|DB_HOST=$host|g" .env
+      - sed -i "s|DB_USER.*|DB_USER=$username|g" .env
+      - sed -i "s|DB_PASS.*|DB_PASS=$pass|g" .env
   build:
     commands:
       - echo building...
