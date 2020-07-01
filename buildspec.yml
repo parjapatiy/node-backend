@@ -8,8 +8,11 @@ phases:
       - apt-get install -y nodejs
   pre_build:
     commands:
-      - sed -i "s|MONGODB_URI=.*|MONGODB_URI='$Mongouri'|g" .env
+      #- sed -i "s|MONGODB_URI=.*|MONGODB_URI='$Mongouri'|g" .env
       - sed -i "s|NODE_ENV.*|NODE_ENV=production|g" .env
+      - sed -i "s|DB_HOST.*|DB_HOST=demodb|g" .env
+      - sed -i "s|DB_USER.*|DB_USER=naman|g" .env
+      - sed -i "s|DB_PASS.*|DB_PASS=namanpande12345|g" .env
   build:
     commands:
       - echo building...
