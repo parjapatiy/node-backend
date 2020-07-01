@@ -8,4 +8,4 @@ sudo apt-get install nodejs -y
 sudo npm i -g pm2
 sudo pm2 stop all
 sudo pm2 start  app.js
-sudo node mysql.js
+#sudo node mysql.js
