@@ -13,6 +13,7 @@ phases:
       - sed -i "s|DB_HOST.*|DB_HOST=$host|g" .env
       - sed -i "s|DB_USER.*|DB_USER=$username|g" .env
       - sed -i "s|DB_PASS.*|DB_PASS=$pass|g" .env
+      - sed -i "s|:3306||g" .env
   build:
     commands:
       - echo building...
