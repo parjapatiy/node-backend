@@ -1,12 +1,12 @@
-version: 0.0
-os: linux
+#version: 0.0
+#os: linux
 
-files:
-  - source: /
-    destination: /apps
+#files:
+  #- source: /
+   # destination: /apps
     
-hooks:  
-  ApplicationStop:
-    - location: Appstop.sh       
-  ApplicationStart:
-    - location: Appstart.sh
+#hooks:  
+ # ApplicationStop:
+  #  - location: Appstop.sh       
+ # ApplicationStart:
+   # - location: Appstart.sh
