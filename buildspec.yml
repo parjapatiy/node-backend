@@ -1,28 +1,15 @@
-version: 0.1
-
+version: 0.2
+env: 
+  parameter-store: 
+    MONGO: "/CodeBuild/mongo_yan"
 phases:
-  install:
-    commands:
-      - echo installing nodejs....working......
-      - curl -sL https://deb.nodesource.com/setup_12.x | bash -
-      - apt-get install -y nodejs
   pre_build:
     commands:
-      - sed -i "s|MONGODB_URI=.*|MONGODB_URI='$Mongouri'|g" .env
-      - sed -i "s|NODE_ENV.*|NODE_ENV=production|g" .env
-      #- sed -i "s|DB_HOST.*|DB_HOST=$host|g" .env
-      #- sed -i "s|DB_USER.*|DB_USER=$username|g" .env
-      #- sed -i "s|DB_PASS.*|DB_PASS=$pass|g" .env
-      #- sed -i "s|:3306||g" .env
+       - npm install
   build:
     commands:
-      - echo building...
-      - npm install
-       
-  post_build:
-    commands:
-      - chmod +x Appstop.sh Appstart.sh  
-       
+       - sed -i 's/localhost/'$MONGO'/' app.js
+
 artifacts:
   files:
-    - "**/*"
+    - '**/*'
