@@ -1,12 +1,11 @@
 version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /home/ubuntu/backend/
-    overwrite: true
-hooks:
-  ApplicationStart:
-    - location: scripts/appstart.sh
-      timeout: 300
-      runas: root
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:ap-south-1:421320058418:task-definition/yanshul-backend:7"
+        LoadBalancerInfo:
+          ContainerName: "backend"
+          ContainerPort: 3000
+        PlatformVersion: "LATEST"
  
