@@ -21,4 +21,4 @@ phases:
       - printf '{"imageUri":"arn:aws:ecs:ap-south-1:421320058418:task-definition/yanshul-backend:7"}' > taskdef.json
 artifacts:
     files: 
-      - taskdef.json
+      - '**/*'
