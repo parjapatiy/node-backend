@@ -1,0 +1,18 @@
+{
+    "executionRoleArn": "arn:aws:iam::421320058418:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "backend",
+            "image": "<IMAGE1_NAME>",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 0,
+                    "protocol": "tcp",
+                    "containerPort": 3000
+                }
+            ]
+        }
+    ],
+   
+}
