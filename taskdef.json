@@ -1,18 +1,25 @@
 {
-    "executionRoleArn": "arn:aws:iam::421320058418:role/ecsTaskExecutionRole",
-    "containerDefinitions": [
-        {
-            "name": "backend",
-            "image": "<IMAGE1_NAME>",
-            "essential": true,
-            "portMappings": [
-                {
-                    "hostPort": 0,
-                    "protocol": "tcp",
-                    "containerPort": 3000
-                }
-            ]
-        }
-    ],
-   
+   "containerDefinitions": [ 
+      { 
+        
+         "image": "<IMAGE1_NAME>",
+        
+         "name": "backend",
+         "portMappings": [ 
+            { 
+               "containerPort": 3000,
+               "hostPort": 0,
+               "protocol": "tcp"
+            }
+         ]
+      }
+   ],
+   "cpu": "250",
+   "executionRoleArn": "arn:aws:iam::421320058418:role/ecsTaskExecutionRole",
+   "family": "yanshul-backend",
+   "memory": "250",
+   "networkMode": "bridge",
+   "requiresCompatibilities": [ 
+       "FARGATE" 
+    ]
 }
