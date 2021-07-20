@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: arn:aws:ecs:ap-south-1:421320058418:task-definition/yanshul-backend:7
+        TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
           ContainerName: "backend"
           ContainerPort: 3000
