@@ -1,15 +1,22 @@
 version: 0.2
 
+env:
+   parameter-store:
+           AWS_DEFAULT_REGION: "/yanshul_ecs_front/AWS_DEFAULT_REGION"
+           AWS_ACCOUNT_ID: "/yanshul_ecs_front/AWS_ACCOUNT_ID"
+           IMAGE_REPO_NAME: "/yanshul_ecs_front/IMAGE_REPO_NAME"
+                   
 phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME
-      
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+          
   build:
     commands:
-      
       - echo Building the Docker image...          
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG      
@@ -19,6 +26,8 @@ phases:
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - echo Writing image definitions file...
       - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+      - printf 'commit_hash:"%s", image_tag:"%s"' $COMMIT_HASH $IMAGE_TAG > imageInfo.txt
+      - cat imageInfo.txt
 artifacts:
     files: 
       - imageDetail.json
