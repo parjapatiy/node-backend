@@ -20,6 +20,6 @@
    "memory": "250",
    "networkMode": "bridge",
    "requiresCompatibilities": [ 
-       "FARGATE" 
+       "EC2" 
     ]
 }
