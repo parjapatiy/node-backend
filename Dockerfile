@@ -1,4 +1,6 @@
 FROM  node:latest
+ARG mongo
+ENV MONGO_URL=$mongo
 RUN mkdir -p /home/node/yan
 WORKDIR /home/node/yan
 COPY . .
