@@ -1,4 +1,4 @@
-FROM  node:latest
+FROM  node:slim
 ARG mongo
 ENV MONGO_URL=$mongo
 RUN mkdir -p /home/node/yan
