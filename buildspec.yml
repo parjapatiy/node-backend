@@ -2,9 +2,9 @@ version: 0.2
 
 env:
    parameter-store:
-           AWS_DEFAULT_REGION: "/yanshul_ecs_front/AWS_DEFAULT_REGION"
-           AWS_ACCOUNT_ID: "/yanshul_ecs_front/AWS_ACCOUNT_ID"
-           IMAGE_REPO_NAME: "/yanshul_ecs_front/IMAGE_REPO_NAME"
+           AWS_DEFAULT_REGION: "/yanshul_ecs_backend/AWS_DEFAULT_REGION"
+           AWS_ACCOUNT_ID: "/yanshul_ecs_backend/AWS_ACCOUNT_ID"
+           IMAGE_REPO_NAME: "/yanshul_ecs_backend/IMAGE_REPO_NAME"
            mongo_url: "/yanshul_ecs_backend/mongo_url"
                    
 phases:
