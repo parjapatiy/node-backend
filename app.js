@@ -35,7 +35,7 @@ if (!isProduction) {
 if(isProduction){
   mongoose.connect(process.env.MONGODB_URI);
 } else {
-  mongoose.connect('process.env.URL);
+  mongoose.connect(process.env.MONGO_URL);
   mongoose.set('debug', true);
 }
 
