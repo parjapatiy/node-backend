@@ -35,7 +35,7 @@ if (!isProduction) {
 if(isProduction){
   mongoose.connect(process.env.MONGODB_URI);
 } else {
-  mongoose.connect('mongodb://yanshulp:yanshul123@yanshul-cluster-shard-00-00.1cq65.mongodb.net:27017,yanshul-cluster-shard-00-01.1cq65.mongodb.net:27017,yanshul-cluster-shard-00-02.1cq65.mongodb.net:27017/conduit?ssl=true&replicaSet=atlas-2upw7o-shard-0&authSource=admin&retryWrites=true&w=majority');
+  mongoose.connect('mongodb://process.env.MONGO_URL');
   mongoose.set('debug', true);
 }
 
